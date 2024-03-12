@@ -77,4 +77,7 @@ order by avg_film_duration desc;
 
 -- Bonus: determine which last names are not repeated in the table actor.
 
-select distinct last_name from actor;
+select last_name
+from actor
+group by last_name
+having count(*)=1
