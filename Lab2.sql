@@ -69,8 +69,12 @@ order by round(avg(length), 2) desc;
 -- 2.2 Identify which ratings have a mean duration of over two hours in order to help select films for customers who prefer longer movies.
 
 select rating
-, avg(length) as avg_film_duration
-, case when avg(length) >120 then 'preferred long film' else 'regular film' end as film_category
+, round(avg(length), 2) as avg_film_duration
+, case when round(avg(length), 2) >120 then 'long film' else 'regular film' end as film_category
 from film
 group by rating
 order by avg_film_duration desc;
+
+-- Bonus: determine which last names are not repeated in the table actor.
+
+select distinct last_name from actor;
